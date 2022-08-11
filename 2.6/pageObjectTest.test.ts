@@ -9,16 +9,16 @@ import {
     WebElement
 } from "selenium-webdriver";
 
-const chromedriver = require('chronedriver');
+const chromedriver = require('chromedriver');
 const driver: WebDriver = new Builder ()
-.withCapabilities.chrome())
+.withCapabilities(Capabilities.chrome())
 .build()
 
-const google - new googlePage(driver, "https://google.com")
+const google = new googlePage(driver, "https://google.com")
 
 test("do a search", async () => {
-    await google.nagivate()
-    await google.search('star with legos')
+    await google.navigate()
+    await google.search('star wars legos')
     await google.getResults()
     await driver.quit()
 })

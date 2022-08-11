@@ -3,9 +3,8 @@ import {
     By,
     Capabilities,
     until, 
-    WeDriver,
+    WebDriver,
     WebElement,
-    WebDriver
 } from "selenium-webdriver"; 
 
 const chromedriver = require("chromedriver");
@@ -17,8 +16,8 @@ export class googlePage {
     url: string = "https://www.google.com/"
     searchBar: By = By.name('q')
     results: By = By.id('rso')
-    constructor(driver: WebDriver, url: string){
-        this.driver=driver 
+    constructor(driver: WebDriver, url: string) {
+        this.driver = driver 
         this.url = url
     
     }
@@ -29,7 +28,8 @@ export class googlePage {
     }
     async getElement(elementBy: By): Promise<WebElement> {
         await this.driver.wait(until.elementLocated(elementBy))
-        let element = await this.driver.wait this.driver.wait(until.elementIsVisible(element))
+        let element = await this.driver.findElement(elementBy)
+        await this.driver.wait(until.elementIsVisible(element))
         return element
     }
     async setInput(elementBy: By, keys: any): Promise<void>{
@@ -48,7 +48,7 @@ export class googlePage {
         await this.driver.wait(until.elementLocated(elementBy))
         return this.driver.findElement(elementBy).getText() 
     }
-    async getResujlts(){
+    async getResults(){
         return this.getText(this.results)
     }
 }
