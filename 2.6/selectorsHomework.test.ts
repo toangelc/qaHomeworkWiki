@@ -21,10 +21,10 @@ describe("Filling in the blanks", () => {
     const errorMsg: By = By.id('validHeader')
 
     test("filling in the blanks for real", async () => {
-        await driver.findElement(hdrInput).sendKeys("Change this")
-        await driver.findElement(mkeInput).sendKeys("change this")
-        await driver.findElement(oaiInput).sendKeys("change this")
-        await driver.findElement(nameInput).sendKeys("change this")
+        await driver.findElement(hdrInput).sendKeys("Wanted")
+        await driver.findElement(mkeInput).sendKeys("A200500")
+        await driver.findElement(oaiInput).sendKeys("SoJo888")
+        await driver.findElement(nameInput).sendKeys("John Smith")
         await driver.findElement(submitBtn).click()
         let errorsMsg = await driver.findElement(errorMsg).getText()
         expect(errorsMsg).toContain("Errors Received:")
