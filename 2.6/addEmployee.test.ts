@@ -26,7 +26,7 @@ const emPage = new employeePage(driver)
 
   describe("Employee Manger Test", () => {
       beforeEach(async () => {
-          await employeePage.navigate();
+          await emPage.navigate();
       })
       afterAll(async () => {
           await driver.quit()
@@ -45,4 +45,4 @@ const emPage = new employeePage(driver)
           await driver.findElement(emPage.titleInput).clear()
           await driver.findElement(emPage.titleInput).sendKeys("Engineer")
   })
-}
+})
