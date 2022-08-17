@@ -5,11 +5,9 @@ import {
     until,
     WebDriver,
   } from "selenium-webdriver";
-  const chromedriver = require("chromedriver");
+  
 
-  const driver: WebDriver = new Builder().withCapabilities(Capabilities.chrome()).build()
-
-  export class employeePO {
+  export class employeeManPO {
       driver: WebDriver;
       url: string = 'https://devmountain-qa.github.io/employee-manager/1.2_Version/index.html'
       header: By = By.css('.titleText')
@@ -25,12 +23,26 @@ import {
       async navigate() {
           await this.driver.get(this.url)
           await this.driver.wait(until.elementLocated(this.header))
-          await this.driver.wait(until.elementLocated(elementBy))
       }
-test("adding Employees", async () => {
+async click(elementBy: By) {
+    await this.driver.wait(until.elementLocated(elementBy))
+    return (await this.driver.findElement(elementBy)).click()
+}
 
-    await emPage.click(emPage.addEmployee)
-    await emPage.click(emPage.newEmployee)
-    await emPage.click(emPage.nameInput)
-    await emPage.click
-})
+async sendKeys(elementBy: By, keys) {
+    await this.driver.wait(until.elementLocated(elementBy))
+    return this.driver.findElement(elementBy).sendKeys(keys)
+}
+
+async getText(elementBy) {
+    await this.driver.wait(until.elementLocated(elementBy))
+    return this.driver.findElement(elementBy).getText()
+}
+async setInput(elementBy: By, keys: any): Promise<void> {
+    let input = await this.driver.findElement(elementBy)
+    await input.click()
+    await input.clear()
+    return input.sendKeys(keys)
+}
+}
+  

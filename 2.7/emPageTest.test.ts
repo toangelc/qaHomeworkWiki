@@ -4,7 +4,7 @@ const chromedriver = require("chromedriver")
 
 const driver: WebDriver = new Builder().withCapabilities(Capabilities.chrome()).build()
 
-import {employeeManPO} from '/employeeManagerPage'
+import {employeeManPO} from './employeeManagerPage'
 
 const employeePage = new employeeManPO(driver)
 
